@@ -1,8 +1,10 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: SentienceMUD Builder Guide
+description: OLC Documentation for SentienceMUD
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+color_scheme: dark
+
+url: https://olc.sentiencemud.net
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
