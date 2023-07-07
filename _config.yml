@@ -13,3 +13,6 @@ nav_external_links:
  - title: "Immortal Guide"
    url: https://immguide.sentiencemud.net
    hide-icon: true
+ - title: "Player Guide"
+   url: https://playerguide.sentiencemud.net
+   hide-icon: true
