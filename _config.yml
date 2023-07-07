@@ -8,3 +8,8 @@ url: https://olc.sentiencemud.net
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
+
+nav_external_links:
+ - title: "Immortal Guide"
+   url: https://immguide.sentiencemud.net
+   hide-icon: true
