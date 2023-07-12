@@ -17,3 +17,19 @@ nav_external_links:
  - title: "Player Guide"
    url: https://playerguide.sentiencemud.net
    hide-icon: true
+
+   callouts:
+  warning:
+    title: Warning
+    color: red
+  notice:
+    title: Notice
+    color: yellow
+  info:
+    title: Note
+    color: purple
+
+mermaid:
+  # Version of mermaid library
+  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+  version: "9.1.3"
