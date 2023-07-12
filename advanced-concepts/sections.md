@@ -6,7 +6,9 @@ parent: Advanced Concepts
 ---
 
 # Blueprint Sections
+
 ---
+
 {: .warning}
 Blueprints are part of instancing, a Work-In-Progress, mostly untested feature. Beware!
 
