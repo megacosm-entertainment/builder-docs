@@ -66,32 +66,32 @@ can_level          no_xp              renewer            show_in_wilds
 |:-----|:----------|:-------|
 | churchmaster | Y | Allows various `church` administration commands. |
 | noquest | Y | Exempt from random mob selection. |
-| plane_tunneler | Y | Partially deprecated, only allows Olaria, Goblin Fort, and Reza. Reworking with scripts. |
-| no_hunt | a | |
-| airship_seller | | |
-| wizi_mob | | |
-| trader | | |
-| loremaster | | |
-| no_resurrect | | |
-| drop_eq | | |
-| gq_master | | |
-| wilds_wanderr | | |
-| ship_quest_master | | |
-| reset_once | | |
-| see_all | | |
-| no_chase | | |
-| takes_skulls | | |
-| pirate | | |
-| player_hunter | | |
-| invasion_leader | | |
-| invasion_mob | | |
-| see_wizi | | |
-| soul_deposit | | |
-| use_skills_only | | |
-| can_level | | |
-| no_xp | | |
-| renewer | | |
-| show_in_wilds | | |
+| plane_tunneler | Y | Deprecated. Exempt from random mob selection. |
+| no_hunt | Y | Prevents mob from being `hunt`ed. |
+| airship_seller | Y | Deprecated(?) by shop rework. Exempt from random mob selection. |
+| wizi_mob | Y | Hides mob from normal player interaction. Exempt from random mob selection. |
+| trader | Y | Used for trade goods. Partially disabled? |
+| loremaster | Y | Enables `lore` command. Exempt from random mob selection. |
+| no_resurrect | Y | Sets mob's corpse to no_resurrect, no_animate |
+| drop_eq | Y | Mob will drop all inv into the room on death. |
+| gq_master | Y | Enables `deposit` command for gq items. |
+| wilds_wanderr | Y | Mob will wander the wilds |
+| ship_quest_master | Y | Part of invasion system. Flag currently does nothing. |
+| reset_once | Y | Sets mob limit to max of 1 in its area. |
+| see_all | Y | Sees through all mortal forms of invisibility. |
+| no_chase | Y | Will not attempt to hunt fleeing players. |
+| takes_skulls | Y | Will attempt to take player skulls in the room, if possible. |
+| pirate | Y | Currently unused. |
+| player_hunter | Y | Currently unused. |
+| invasion_leader | Y | Prevents mob head from decaying, part of Invasions/Ship Quests. |
+| invasion_mob | Y | Part of Invasion system, chance to give quest point on death. |
+| see_wizi | Y | Can see through all immortal forms of invisibility. |
+| soul_deposit | Y | Currently unused |
+| use_skills_only | Y | Currently unused. |
+| can_level | Y | Capable of gaining experience and leveling. |
+| no_xp | Y | Awards 0 experience. |
+| renewer | Y | Enables `renew` command. |
+| show_in_wilds | Y | Appears in wilds as <span style="color:yellow">@</span> |
 
 ### AffectedBy
 ```
@@ -107,19 +107,19 @@ web
 
 | Flag | Settable? | Effect |
 |:-----|:----------|:-------|
-| blind | | |
-| invisible | | |
-| detect_evil | | |
-| detect_invis | | |
-| detect_magic | | |
-| detect_hidden | | |
-| detect_good | | |
-| sanctuary | | |
-| faerie_fire | | |
-| infrared | | |
-| curse | | |
-| death_grip | | |
-| poison | | |
+| blind | Y | Affected by the blind spell|
+| invisible | Y | Affected by 'invisible' |
+| detect_evil | Y | |
+| detect_invis | Y | |
+| detect_magic | Y | |
+| detect_hidden | Y | |
+| detect_good | Y | |
+| sanctuary | Y | |
+| faerie_fire | Y | |
+| infrared | Y | |
+| curse | Y | |
+| death_grip | Y | |
+| poison | Y | |
 | sneak | | |
 | hide | | |
 | sleep | | |
@@ -150,27 +150,31 @@ protected
 
 | Flag | Settable? | Effect |
 |:-----|:----------|:-------|
-| silence | | |
-| evasion | | |
-| cloak_guile | | |
-| warcry | | |
-| light_shroud | | |
-| healing_aura | | |
-| energy_field | | |
-| spell_shield | | |
-| spell_deflection | | |
-| neurotoxin | | |
-| toxin | | |
-| electrical_barrier | | |
-| fire_barrier | | |
-| improved_invis | | |
-| ensnare | | |
-| see_cloak | | |
-| stone_skin | | |
-| morphlock | | |
-| deathsight | | |
-| immobile | | |
-| protected | | |
+| silence | Y | Affected by 'silence'. Cannot recite scrolls, communicate verbally, use `warcry` or `cast`. |
+| evasion | Y | Affected by 'evasion'. Increased chance to dodge attacks. Chance to avoid aggro from mobs. |
+| cloak_guile | Y | Further chance to avoid aggro mobs.|
+| warcry | Y | Increased skill in many combat abilities. |
+| light_shroud | Y | Reduced damage from undead by 10%. Blocks kill spell.|
+| healing_aura | Y | Another form of regeneration. Mutually exclusive with regeneration. |
+| energy_field | Y | Affected by 'energy field' - Reduces incoming energy/lightning damage by 10%. |
+| spell_shield | Y | Affected by 'spell shield'. Unused..? |
+| spell_deflection | Y | Affected by 'spell deflection'. Chance to bounce spells back at random targets. |
+| avatar_shield | Y | Reduces damage from evil by 10%. |
+| fatigue | Y | Lowers victim movement. |
+| paralysis | Y | Prevents fleeing. |
+| neurotoxin | Y | Affected by neurotoxin, lowers int. |
+| toxin | Y | Affected by toxins, lowers strength. |
+| electrical_barrier | Y | Affected by 'electrical barrier'. Chance to bounce damage back at enemies. |
+| fire_barrier | Y | Affected by 'fire barrier'. Chance to bounce damage back at enemies. |
+| frost_barrier | Y | Chance to bounce damage back at enemies. |
+| improved_invis | Y | Affected by 'improved invis'. Invis isn't broken by combat. |
+| ensnare | Y | Affected by 'ensnare'. Cannot move. |
+| see_cloak | Y | Can see through 'cloak of guile' spell. |
+| stone_skin | Y | Affected by 'stone skin'. Harder to bite. Improves AC. |
+| morphlock | Y | Prevents use of `shift` or `shape`. |
+| deathsight | Y | Affected by 'deathsight' spell. Can see ghosts. |
+| immobile | Y | Currently just means unable to flee. |
+| protected | Y | Protected from magic or damage. |
 
 ### Special Functions
 ```
