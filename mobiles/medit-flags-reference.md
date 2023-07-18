@@ -192,34 +192,35 @@ These are mostly deprecated.. they provide some functions, but will likely be re
 
 | Flag | Settable? | Effect |
 |:-----|:----------|:-------|
-| breath_any | | |
-| breath_acid | | |
-| breath_fire | | |
-| breath_frost | | |
-| breath_gas | | |
-| breath_lightning | | |
-| cast_adept | | |
-| cast_cleric | | |
-| cast_judge | | |
-| cast_mage | | |
-| cast_undead | | |
-| executioner | | |
-| fido | | |
-| guard | | |
-| janitor | | |
-| mayor | | |
-| poison | | |
-| thief | | |
-| nasty | | |
-| patrolman | | |
-| questmaster | | |
-| protector | | |
-| dark_magic | | |
-| fight_bot | | |
-| pirate | | |
-| pirate_hunter | | |
-| invasion | | |
-| invasion_leader | | |
+| breath_any | Y | Will attempt to use any of the breath affects at random. |
+| breath_acid | Y | Periodically attempts to use acid breath. |
+| breath_fire | Y | Periodically attempts to use fire breath. |
+| breath_frost | Y | Periodically attempts to use frost breath. |
+| breath_gas | Y | Periodically attempts to use gas breath. |
+| breath_lightning | Y | Periodically attempts to use lightning breath. |
+| cast_adept | Y | Periodically casts one of armour, bless, cure blindness, heal, cure poison, refresh, or cure disease on players level 10 or under. |
+| cast_cleric | Y | Uses blindness, cause serious, earthquake, cause critical, dispel evil, curse, flamestrike, harm, plague, or dispel magic in combat, based on caster level. |
+| cast_judge | Y | Uses 'high explosive' in combat. |
+| cast_mage | Y | Depending on caster level, can use fireball, chill touch, weaken, colour spray, change sex, energy drain, plague, or acid blast in combat. |
+| cast_undead | Y | Depending on caster level, can use curse, weaken, chill touch, blindness, poison, energy drain, harm, teleport, or plague in combat. |
+| executioner | Y | Used to begin combat with 'criminals' - There are no crimes currently defined, so this is functionally disabled. |
+| fido | Y | Consumes mob corpses in the room, leaving items on the floor. |
+| guard | Y | Tells players to put pants on if male. If female, may tell them to put clothes on or grossly hit on them. Don't use this, please. |
+| janitor | Y | Picks up and purges low value (under 10 silver) trash or drink containers in the room. |
+| mayor | Y | Does absolutely nothing. Entire function commented out. Used to do pathfinding and speech for the Olarian Mayor. |
+| poison | Y | Attempts to bite enemies in combat, injecting them with poison. |
+| thief | Y | Will attempt to steal coins from players. |
+| nasty | Y | Will attempt to backstab players that are slightly above (within 10 levels) the mob's level, then attempt to flee. |
+| patrolman | Y | Attempts to break up fights in the room.. by joining them. |
+| questmaster | Y | If fighting, acts as the 'cast_mage' special function. |
+| protector | Y | Unused. Used to make Sir Albert Steiner throw people over level 30 in gaol if they attacked mobs in Plith. |
+| dark_magic | Y | Like some of the other caster specs, but needlessly edgy in its speech lines. Completely commented out. |
+| magic_master | Y | If blinded, attempts to cure blind. If cursed, remove curse. If not affected by sanctuary, attempts to sanc itself. Will also attempt to faerie fire itself for some reason. May attempt to cure itself, dispel magic on enemies, and otherwise cast a large variety of spells. |
+| fight_bot | Y | Attempts to web, silence, blind, poison, plague enemies if not affected by these. Will cure blind itself, will attempt to remove/rewear all if not sanced. Can counterspell if enemy casts. Will otherwise cast magic missile. |
+| pirate | Y | Same as fight_bot. Used in some invasion/ship quest code. Do not use. |
+| pirate_hunter | Y | Limited form of fight_bot, used for going after pirate players. |
+| invasion | Y | Just does various emotes. Used in invasions |
+| invasion_leader | Y | Limited fight_bot, cannot be attacked by players outside of invasion quest level range. |
 
 ### Parts
 ```

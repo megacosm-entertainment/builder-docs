@@ -13,5 +13,6 @@ credits        delaprog       description    filename       flags
 landx          landy          name           open           placetype      
 postoffice     recall         removetrade    repop          security       
 settrade       show           varclear       varset         viewtrade      
-vnum           wilds          x              y              
+vnum           wilds          x              y              levels
+notes
 ```
