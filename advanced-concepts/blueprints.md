@@ -18,3 +18,39 @@ create         deliprog       description    flags          list
 mode           name           repop          section        show           
 static         varclear       varset         
 ```
+
+### ?
+
+### addiprog
+
+### areawho
+
+### commands
+
+### comments
+
+### create
+
+### deliprog
+
+### description
+
+### flags
+
+### list
+
+### mode
+
+### name
+
+### repop
+
+### section
+
+### show
+
+### static
+
+### varclear
+
+### varset

@@ -18,3 +18,43 @@ create         deldprog       description    entry          exit
 flags          floors         list           mountout       name           
 portalout      show           varclear       varset         zoneout        
 ```
+
+### ?
+
+### adddprog
+
+### areawho
+
+### commands
+
+### comments
+
+### create
+
+### deldprog
+
+### description
+
+### entry
+
+### exit
+
+### flags
+
+### floors
+
+### list
+
+### mountout
+
+### name
+
+### portalout
+
+### show
+
+### varclear
+
+### varset
+
+### zoneout

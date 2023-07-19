@@ -17,3 +17,29 @@ Blueprints are part of instancing, a Work-In-Progress, mostly untested feature. 
 name           description    comments       type           flags          
 recall         rooms          link           
 ```
+
+### ?
+
+### commands
+
+### list
+
+### show
+
+### create
+
+### name
+
+### description
+
+### comments
+
+### type
+
+### flags
+
+### recall
+
+### rooms
+
+### link

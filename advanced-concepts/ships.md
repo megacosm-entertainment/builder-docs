@@ -19,3 +19,45 @@ guns           hit            keys           list           move
 name           oars           object         show           turning        
 weight         
 ```
+
+### ?
+
+### armor
+
+### blueprint
+
+### capacity
+
+### class
+
+### commands
+
+### create
+
+### crew
+
+### desc
+
+### flags
+
+### guns
+
+### hit
+
+### keys
+
+### list
+
+### move
+
+### name
+
+### oars
+
+### object
+
+### show
+
+### turning
+
+### weight
