@@ -7,4 +7,6 @@ parent: Scripting
 
 # Basics of Scripting
 
+## Writing a script
+
 ## Compiling Your Script

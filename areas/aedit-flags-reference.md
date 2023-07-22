@@ -19,7 +19,7 @@ parent: Area Editor
 | testport | yes | |
 | no_recall | yes | Prevents recall, maybe other teleportation magics? |
 | no_rooms | yes | Don't save rooms for this zone. |
-| newbie | yes? | Reduce damage to players by 75%. Can only be saved on "Realm of Alendith." |
+| newbie | yes? | Reduce damage to players by 75%. |
 | no_get_random | yes | Prevents get_random_* from targeting anything in this zone. Mostly for questing. |
 | no_fading | yes | Prevents use of 'fade' in the zone. |
 | blueprint | yes? | Area is used to hold blueprint rooms. Prevents vlinks to zone. |
