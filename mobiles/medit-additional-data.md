@@ -54,7 +54,7 @@ Sets the suffix used for each line of the quest scroll after the header.
 ### Width `<number>`
 
 Sets a maximum line width for the scroll lines.
-
+---
 
 ## Shop
 Shop data is used to create mobile run shops. This was previously done with resets. All commands are in the mobile editor and begin with `shop`.
@@ -151,6 +151,7 @@ Sets a stock entry as singular. Cannot buy more than 1 at a time.
 ### Stock `<#> remove`
 
 Removes the specified stock entry.
+---
 
 ## Crew
 Used for setting crew data. Used with the ship system. All commands are used in the mobile editor, prefaced with `crew`
