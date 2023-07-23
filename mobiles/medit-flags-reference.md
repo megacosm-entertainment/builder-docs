@@ -371,87 +371,77 @@ feigned
 |:-----|:----------|:-------|
 
 ### Damtype (for unarmed)
-```
-Name                 Noun
-none                 hit                 
-slice                slice               
-stab                 stab                
-slash                slash               
-whip                 whip                
-claw                 claw                
-blast                blast               
-pound                pound               
-crush                crush               
-grep                 grep                
-bite                 bite                
-pierce               pierce              
-suction              suction             
-beating              beating             
-digestion            digestion           
-charge               charge              
-slap                 slap                
-punch                punch               
-wrath                wrath               
-magic                magic               
-divine               divine power        
-
-Name                 Noun
-holy                 holy fire           
-cleave               cleave              
-scratch              scratch             
-peck                 peck                
-peckb                peck                
-chop                 chop                
-sting                sting               
-smash                smash               
-shbite               shocking bite       
-flbite               flaming bite        
-frbite               freezing bite       
-acbite               acidic bite         
-chomp                chomp               
-drain                life drain          
-decay                decaying touch      
-thrust               thrust              
-slime                slime               
-shock                shock               
-thwack               thwack              
-flame                flame               
-chill                chill               
-
-Name                 Noun
-vorpal               slash               
-purify               purifying light     
-crblow               crippling blow      
-acrid                acrid spray         
-blight               blighting touch     
-boiling              boiling spray       
-corrode              corrosion           
-discharge            discharge           
-flog                 flog                
-fumes                caustic fumes       
-lacerate             laceration          
-lash                 lash                
-lbolt                lightning bolt      
-pain                 pain                
-pestilence           pestilence          
-scorch               scorching           
-scourge              scourge             
-scream               scream              
-shining              shining light       
-shriek               deafening shriek    
-spike                spike               
-
-Name                 Noun
-spores               spores              
-surge                surge               
-torrent              watery torrent      
-toxblast             toxic blast         
-venom                venom               
-winbrth              wintery breath
-```
-
-| Flag | Settable? | Effect |
-|:-----|:----------|:-------|
+| Name | Attack String | Damage Type |
+|:-----|:--------------|:------------|
+| none | hit | untyped |
+| slice | slice | slash |
+| stab | stab | pierce |
+| slash | slash | slash |
+| whip | whip | slash |
+| claw | claw | slash |
+| blast | blast | bash |
+| pound | pound | bash |
+| crush | crush | bash |
+| grep | grep | slash |
+| bite | bite | pierce |
+| pierce | pierce | pierce |
+| suction | suction | bash |
+| beating | beating | bash |
+| digestion | digestion | acid |
+| charge | charge | bash |
+| slap | slap | bash |
+| punch | punch | bash |
+| wrath | wrath | energy |
+| magic | magic | magic |
+| divine | divine power | holy |
+| holy | holy fire | holy |
+| cleave | cleave | slash |
+| scratch | scratch | pierce |
+| peck | peck | pierce |
+| peckb | peck | bash |
+| chop | chop | slash |
+| sting | sting | pierce |
+| smash | smash | bash |
+| shbite | shocking bite | lightning |
+| flbite | flaming bite | fire |
+| frbite | freezing bite | cold |
+| acbite | acidic bite | acid |
+| chomp | chomp | pierce |
+| drain | life drain | negative |
+| decay | decaying touch | negative |
+| thrust | thrust | pierce |
+| slime | slime | acid |
+| shock | shock | lightning |
+| thwack | thwack | bash |
+| flame | flame | fire |
+| chill | chill | cold |
+| vorpal | slash | vorpal |
+| purify | purifying light | holy |
+| crblow | crippling blow | negative |
+| acrid | acrid spray | acid |
+| blight | blighting touch | disease |
+| boiling | boiling spray | water |
+| corrode | corrosion | acid |
+| discharge | discharge | lightning |
+| flog | flog | slash |
+| fumes | caustic fumes | acid |
+| lacerate | laceration | slash |
+| lash | lash | slash |
+| lbolt | lightning bolt | lightning |
+| pain | pain | mental |
+| pestilence | pestilence | disease |
+| scorch | scorching | fire |
+| scourge | scourge | slash |
+| scream | scream | sound |
+| shining | shining light | light |
+| shriek | deafening shriek | sound |
+| spike | spike | pierce |
+| spores | spores | disease |
+| surge | surge | lightning |
+| torrent | watery torrent | water |
+| toxblast | toxic blast | poison |
+| venom | venom | poison |
+| winbrth | wintery breath | cold |
 
 ### Corpse Type
 ```

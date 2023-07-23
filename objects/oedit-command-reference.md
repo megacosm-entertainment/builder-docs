@@ -91,12 +91,31 @@ Sets ['extra3'](oedit-flags-reference#extra3-flags) flags on the object.
 ### extra4 `<flag1> [flag2] [flag3] ...`
 Sets ['extra4'](oedit-flags-reference#extra4-flags) flags on the object.
 
-### fragility
+### fragility `<flag>`
+Sets the object's [fragility](oedit-flags-reference#fragility). Only really used for keys, weapons, and gear.
 
 ### level `<level>`
 Sets the object level. For gear, this is required for being able to wear/wield objects. Will also assign a number of 'points' for changing things on the object.
 
-### lock
+### lock `<subcommands>`
+
+##### lock add
+Adds a default lock state to the obj.
+
+##### lock remove
+Removes lockstate from the obj.
+
+##### lock key `<vnum>`
+Sets the specified vnum as a key for the obj.
+
+##### lock key clear
+Removes the set key.
+
+##### lock flags `<flags>`
+Sets [lock flags](oedit-flags-reference#lock-flags) on the lock.
+
+##### lock pick `<chance 0-100>`
+Sets the lock pick chance.
 
 ### long `<string>`
 Sets the long description (shown in the room) for the object.
@@ -110,8 +129,10 @@ Sets keywords used for players to interact with the object.
 Moves to editing the next object in the zone.
 
 ### oupdate
+Toggles the object's 'oupdate' flag. This is not currently used.
 
-### persist
+### persist <on|off>
+Enables or disables default persistence for instances of this object. Use sparingly.
 
 ### prev
 Moves to editing the previous object in the zone.
@@ -131,31 +152,31 @@ Allows Implementors to 'sign' an object, mostly freeing it from point constraint
 ### timer `<number>`
 Sets the default time until the object destroys itself.
 
-### type
+### type `<type>`
+Sets the object type, which impacts many things. This is covered in more detail on the [object type details](object-type-details) page.
 
-### v0
-
-### v1
-
-### v2
-
-### v3
-
-### v4
-
-### v5
-
-### v6
-
-### v7
+### v0 - v7 `<value>`
+Sets object values 0-7. Value meanings can vary wildly between item types, so this is covered on the [object type details](object-type-details) page.
 
 ### varclear `<variable name>`
+Clears the named variable.
 
-### varset
+### varset `<name> <number|string|room> <yes|no> <value>`
+Used to set a variable that will load on every instance of the object. This can be a number, a string, or reference to a room. The Yes/No value is to mark if the variable should be saved on the object.
 
-### waypoints
+Ex: `varset home room yes 4000` - This would set a variable on the object, 'home', as a reference to room 4000.
+
+### waypoints add `<wilds uid> <south point> <east point> [name]`
+Adds a waypoint at the given location, optionally with the given name. Meant for use with 'map' objects.
+
+### waypoints list
+Lists waypoints on the map.
+
+### waypoints delete `<number>`
+Removes the selected waypoint from the obj.
 
 ### wear `<flag1> [flag2] [flag3] ...`
 Sets [wear locations](oedit-flags-reference#wear-flags) for the object. `take` is mandatory for anything players need to be able to pick up.
 
-### weight
+### weight `<weight>`
+Sets the weight of this object

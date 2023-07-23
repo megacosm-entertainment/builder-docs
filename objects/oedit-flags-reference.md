@@ -169,6 +169,16 @@ closelock
 pierce             bash               slash              exotic  
 ```
 
+### Armour Strength Flags
+
+| Strength | Calculation |
+|:---------|:------------|
+| Light | level/10 |
+| Medium | level/5 |
+| Strong | level * 3/10 |
+| Heavy | level * 2/5 |
+| None | 0 |
+
 ### Apply Flags (stat modifiers)
 ```
 none               strength           dexterity          intelligence       
@@ -184,6 +194,79 @@ mace               axe                flail              whip
 polearm            stake              quarterstaff       arrow              
 bolt               dart               harpoon            
 ```
+
+### Damage types
+| Name | Attack String | Damage Type |
+|:-----|:--------------|:------------|
+| none | hit | untyped |
+| slice | slice | slash |
+| stab | stab | pierce |
+| slash | slash | slash |
+| whip | whip | slash |
+| claw | claw | slash |
+| blast | blast | bash |
+| pound | pound | bash |
+| crush | crush | bash |
+| grep | grep | slash |
+| bite | bite | pierce |
+| pierce | pierce | pierce |
+| suction | suction | bash |
+| beating | beating | bash |
+| digestion | digestion | acid |
+| charge | charge | bash |
+| slap | slap | bash |
+| punch | punch | bash |
+| wrath | wrath | energy |
+| magic | magic | magic |
+| divine | divine power | holy |
+| holy | holy fire | holy |
+| cleave | cleave | slash |
+| scratch | scratch | pierce |
+| peck | peck | pierce |
+| peckb | peck | bash |
+| chop | chop | slash |
+| sting | sting | pierce |
+| smash | smash | bash |
+| shbite | shocking bite | lightning |
+| flbite | flaming bite | fire |
+| frbite | freezing bite | cold |
+| acbite | acidic bite | acid |
+| chomp | chomp | pierce |
+| drain | life drain | negative |
+| decay | decaying touch | negative |
+| thrust | thrust | pierce |
+| slime | slime | acid |
+| shock | shock | lightning |
+| thwack | thwack | bash |
+| flame | flame | fire |
+| chill | chill | cold |
+| vorpal | slash | vorpal |
+| purify | purifying light | holy |
+| crblow | crippling blow | negative |
+| acrid | acrid spray | acid |
+| blight | blighting touch | disease |
+| boiling | boiling spray | water |
+| corrode | corrosion | acid |
+| discharge | discharge | lightning |
+| flog | flog | slash |
+| fumes | caustic fumes | acid |
+| lacerate | laceration | slash |
+| lash | lash | slash |
+| lbolt | lightning bolt | lightning |
+| pain | pain | mental |
+| pestilence | pestilence | disease |
+| scorch | scorching | fire |
+| scourge | scourge | slash |
+| scream | scream | sound |
+| shining | shining light | light |
+| shriek | deafening shriek | sound |
+| spike | spike | pierce |
+| spores | spores | disease |
+| surge | surge | lightning |
+| torrent | watery torrent | water |
+| toxblast | toxic blast | poison |
+| venom | venom | poison |
+| winbrth | wintery breath | cold |
 
 ### Special weapon flags
 ```
