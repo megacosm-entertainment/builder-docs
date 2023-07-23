@@ -11,6 +11,8 @@ Questor data is used primarily with scripting to create additional quest masters
 <details>
 <summary>Questor Command Reference</summary>
 
+Basic summaries of the various 'questor' commands.
+
 ### Add
 
 Enables questor data on the mob.
@@ -56,7 +58,6 @@ Sets the suffix used for each line of the quest scroll after the header.
 ### Width `<number>`
 
 Sets a maximum line width for the scroll lines.
-
 </details>
 
 
@@ -65,6 +66,8 @@ Shop data is used to create mobile run shops. This was previously done with rese
 
 <details>
 <summary>Shop command reference</summary>
+
+Basic summary of the shop commands.
 
 ### Assign
 
@@ -157,7 +160,6 @@ Sets a stock entry as singular. Cannot buy more than 1 at a time.
 ### Stock `<#> remove`
 
 Removes the specified stock entry.
-
 </details>
 
 
@@ -168,6 +170,8 @@ Details about each crew rating to follow.
 
 <details>
 <summary>Crew Command Reference</summary>
+
+Basic summary of crew commands.
 
 ### Assign
 
@@ -203,5 +207,4 @@ Sets this crew member's 'navigation' skill rating.
 ### Leadership `<rating>`
 
 Sets this crew member's 'leadership' skill rating.
-
 </details>
