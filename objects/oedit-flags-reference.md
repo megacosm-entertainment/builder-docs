@@ -196,6 +196,7 @@ bolt               dart               harpoon
 ```
 
 ### Damage types
+
 | Name | Attack String | Damage Type |
 |:-----|:--------------|:------------|
 | none | hit | untyped |
