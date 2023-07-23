@@ -9,7 +9,6 @@ parent: Mobile Editor
 Questor data is used primarily with scripting to create additional quest masters. More information on this to follow as I document the scripting engine. All commands are in the mobile editor and begin with `questor`.
 
 <details>
-
 <summary>Questor Command Reference</summary>
 
 ### Add
@@ -60,11 +59,11 @@ Sets a maximum line width for the scroll lines.
 
 </details>
 
+
 ## Shop
 Shop data is used to create mobile run shops. This was previously done with resets. All commands are in the mobile editor and begin with `shop`.
 
 <details>
-
 <summary>Shop command reference</summary>
 
 ### Assign
@@ -161,13 +160,13 @@ Removes the specified stock entry.
 
 </details>
 
+
 ## Crew
 Used for setting crew data. Used with the ship system. All commands are used in the mobile editor, prefaced with `crew`
 
 Details about each crew rating to follow.
 
 <details>
-
 <summary>Crew Command Reference</summary>
 
 ### Assign
