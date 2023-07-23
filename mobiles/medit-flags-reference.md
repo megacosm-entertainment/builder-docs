@@ -1,7 +1,7 @@
 ---
 layout: default
 title: MEdit Fields Reference
-nav_order: 3
+nav_order: 4
 parent: Mobile Editor
 ---
 
@@ -51,7 +51,7 @@ stay_locale        update_always      changer            banker
 | changer | Y | Can convert silver <-> gold. Exempt from random mob selection. Protected.  Provides see_all. |
 | banker | Y | Can give money. Exempt from random mob selection. Protected. Sees all.  |
 
-### Act2 Flags (First bank filled up)
+### Act2 Flags
 ```
 churchmaster       noquest            plane_tunneler     no_hunt            
 airship_seller     wizi_mob           trader             loremaster         
@@ -221,6 +221,12 @@ These are mostly deprecated.. they provide some functions, but will likely be re
 | pirate_hunter | Y | Limited form of fight_bot, used for going after pirate players. |
 | invasion | Y | Just does various emotes. Used in invasions |
 | invasion_leader | Y | Limited fight_bot, cannot be attacked by players outside of invasion quest level range. |
+
+### Sex
+```
+male               female             neutral            random             
+none
+``` 
 
 ### Parts
 ```

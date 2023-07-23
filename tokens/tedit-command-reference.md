@@ -48,10 +48,10 @@ Sets how long the token will last before extracting itself. Can be affected by t
 ### desc
 Allows you to set a description for the token. This is only visible to staff.
 
-### value <0-7> <value>
+### value `<0-7> <value>`
 Sets one of the 7 numerical values on the token.
 
-### valuename <0-7> `<string>`
+### valuename `<0-7> <string>`
 Sets the name of the given value. Some of these are set automatically depending on token type.
 
 ### addtprog `<vnum> <trigger> <phrase>`
@@ -59,10 +59,10 @@ Attaches a token prog to the token with the given trigger and phrase.
 
 *Example*: `addtprog 11001 speech hello` - This would attached token prog 11001 to this token, and make it fire whenever anyone says 'hello'.
 
-### deltprog <tprog number>
+### deltprog `<tprog number>`
 Removes the given tprog from the list assigned to this token.
 
 ### varset
-varset <name> <number|string|room> <yes|no> <value>
-### varclear
-varclear <name>
+varset `<name> <number|string|room> <yes|no> <value>`
+### varclear `<name>`
+Removes the named variable from the token.
