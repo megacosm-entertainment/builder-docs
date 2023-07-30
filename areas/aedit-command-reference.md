@@ -47,55 +47,81 @@ Lists the available commands in the area editor. You're here!
 Opens the string editor to write builder comments. This field is like writing any description, but is only visible to builders. Leave notes here about plans, things you need help with, the purpose of the area, important vnums, etc.
 
 ### create
+Creates a brand new zone, with an area# filename. Change this, then start setting the other things for your zone.
 
-### credits
+### credits `<string>`
+A list of credits for the zone. Visible to players.
 
-### delaprog
+### delaprog `<number>`
+Removes an area prog from the list.
 
 ### description
+Enters the string editor to set a description for the area. This should give some background lore, and try to entice players into exploring. This is a player visible field.
 
-### filename
+### filename `<file>`
+The filename used to store the area on the server.
 
-### flags
+### flags `<flag1> [flag2] [flag3] ...`
+Sets various [area flags](aedit-flags-reference#area-flags).
 
-### landx
+### landx `<x coord>`
+Landing x coordinate on the area's set wilderness map. Unused at present.
 
-### landy
+### landy `<y coord>`
+Landing y coordinate on the area's set wilderness map. Unused at present.
 
-### levels
+### levels `<min level> <max level>`
+Sets the suggested level range for the zone. Visible to players.
 
-### name
+### name `<string>`
+Sets the name of the area, seen by players in multiple commands. Used for area lookups.
 
-### notes
+### notes 
+Enters the string editor to make area-wide building notes. Not visible to players.
 
-### open
+### open `<yes|no>`
 
-### placetype
+### placetype `<continent>`
+Sets the [continent](aedit-flags-reference#placetype-flag) for the area. Used for some teleportation and selection of rooms for quests, etc.
 
-### postoffice
+### postoffice `<vnum>`
+Sets the vnum for the 'post office' room for the zone. Informational for players.
 
-### recall
+### recall `<vnum>`
+Sets the recall room for the zone.
 
-### removetrade
+### removetrade `<number>`
+Currently unused.
 
-### repop
+### repop `<minutes>`
+How often the area will reset.
 
-### security
+### security `<0-9>`
+Minimum security setting required to build in the zone.
 
 ### settrade
+Unused.
 
 ### show
+Shows the current state of the area being edited. Same as pressing enter.
 
-### varclear
+### varclear `<name>`
+Clears the named variable.
 
-### varset
+### varset `<name> <number|string|room> <yes|no> <value>`
+Sets a variable of the given type on the area index.
 
 ### viewtrade
+Unused.
 
-### vnum
+### vnum `<lower vnum> <upper vnum>`
+Sets the vnum range for the area.
 
-### wilds
+### wilds `<map uid>`
+Sets the wilderness map that this area is 'on'
 
-### x
+### x `<x coord>`
+Sets the approximate location of this zone on its wilderness map.
 
-### y
+### y `<y coord>`
+Sets the approximate location of this zone on its wilderness map.

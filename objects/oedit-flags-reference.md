@@ -103,7 +103,7 @@ Solid|Strong|Normal|Weak
 ```
 
 ## Item type specific flags
-### Portal exit flags
+### Portal flags
 ```
 door               closed             nopass             noclose            
 nolock             found              broken             nobash             
@@ -268,6 +268,53 @@ bolt               dart               harpoon
 | toxblast | toxic blast | poison |
 | venom | venom | poison |
 | winbrth | wintery breath | cold |
+
+### Liquids
+
+| Name | Colour | Proof | Full | Thirst | Food | Serving ize |
+|:-----|:-------|:------|:-----|:-------|:-----|:------|
+| water | clear | 0 | 1 | 10 | 0 | 16 |
+| beer | amber | 12 | 1 | 8 | 1 | 12 |
+| red wine | burgundy | 30 | 1 | 8 | 1 | 5 |
+| ale | brown | 15 | 1 | 8 | 1 | 12 |
+| dark ale | dark | 16 | 1 | 8 | 1 | 12 |
+| whisky | golden | 120 | 1 | 5 | 0 | 2 |
+| lemonade | pink | 0 | 1 | 9 | 2 | 12 |
+| firebreather | boiling | 190 | 0 | 4 | 0 | 2 |
+| local specialty | clear | 151 | 1 | 3 | 0 | 2 |
+| slime mold juice | green | 0 | 2 | -8 | 1 | 2 |
+| stew | brown | 0 | 10 | 10 | 10 | 12 |
+| milk | white | 0 | 2 | 9 | 3 | 12 |
+| tea | tan | 0 | 1 | 8 | 0 | 6 |
+| coffee | black | 0 | 1 | 8 | 0 | 6 |
+| blood | red | 0 | 2 | 0 | 0 | 6 |
+| salt water | clear | 0 | 1 | -2 | 0 | 1 |
+| coke | brown | 0 | 2 | 9 | 2 | 12 |
+| root beer | brown | 0 | 2 | 9 | 2 | 12 |
+| elvish wine | green | 35 | 2 | 8 | 1 | 5 |
+| white wine | golden | 28 | 1 | 8 | 1 | 5 |
+| champagne | golden | 32 | 1 | 8 | 1 | 5 |
+| mead | honey-coloured | 34 | 2 | 8 | 2 | 12 |
+| rose wine | pink | 26 | 1 | 8 | 1 | 5 |
+| benedictine wine | burgundy | 40 | 1 | 8 | 1 | 5 |
+| vodka | clear | 130 | 1 | 5 | 0 | 2 |
+| cranberry juice | red | 0 | 1 | 9 | 2 | 12 |
+| orange juice | orange | 0 | 2 | 9 | 3 | 12 |
+| absinthe | green | 200 | 1 | 4 | 0 | 2 |
+| brandy | golden | 80 | 1 | 5 | 0 | 4 |
+| aquavit | clear | 140 | 1 | 5 | 0 | 2 |
+| schnapps | clear | 90 | 1 | 5 | 0 | 2 |
+| ice wine | purple | 50 | 2 | 6 | 1 | 5 |
+| amontillado | burgundy | 35 | 2 | 8 | 1 | 5 |
+| sherry | red | 38 | 2 | 7 | 1 | 5 |
+| framboise | red | 50 | 1 | 7 | 1 | 5 |
+| rum | amber | 151 | 1 | 4 | 0 | 2 |
+| cordial | clear | 100 | 1 | 5 | 0 | 2 |
+| ammonia | pale green | 0 | 1 | 0 | 0 | 10 |
+| grog | dark brown | 40 | 2 | 4 | 0 | 12 |
+| snake oil | viscous | 0 | 2 | 1 | 2 | 10 |
+| vinegar | pungent | 0 | 2 | 1 | 3 | 8 |
+| acetone | clear | 0 | 1 | 0 | 0 | 9 |
 
 ### Special weapon flags
 ```
