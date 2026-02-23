@@ -12,11 +12,11 @@ parent: Area Editor
 ?              addaprog       addtrade       age            airshipland    
 areawho        builder        commands       comments       create         
 credits        delaprog       description    filename       flags          
-landx          landy          name           open           placetype      
-postoffice     recall         removetrade    repop          security       
-settrade       show           varclear       varset         viewtrade      
-vnum           wilds          x              y              levels
-notes
+landx          landy          name           notes          open           
+placetype      postoffice     recall         regions        removetrade    
+repop          security       settrade       show           tags           
+topic          varclear       varset         viewtrade      vnum           
+wilds          x              y              levels
 ```
 
 ### ?
@@ -90,6 +90,44 @@ Sets the vnum for the 'post office' room for the zone. Informational for players
 ### recall `<vnum>`
 Sets the recall room for the zone.
 
+### regions `<subcommand> [args]`
+
+Manages named sub-regions within an area. Each area has a default region (applying to all rooms that aren't assigned to a custom region) and any number of named custom regions. Custom regions can override the area's `areawho`, `placetype`, `topic`, and flags on a per-region basis. Use `redit region` to assign rooms.
+
+When sub-commands take `<#|name|default>`, the region can be identified by its list number, a prefix of its name (once set with `regions name`), or the keyword `default` for the area-wide default region.
+
+Sub-commands:
+
+##### regions list
+Shows the default region settings and all custom regions.
+
+##### regions add `<name>`
+Creates a new named region. Returns its number for use in other sub-commands.
+
+##### regions remove `<#>`
+Deletes a custom region. All rooms in that region revert to the default region.
+
+##### regions name `<#|name|default> <name>`
+Renames a region.
+
+##### regions topic `<#|name|default> <topic|clear>`
+Sets the topic string for the region. Overrides the area-level topic for rooms in this region. Use `clear` to remove.
+
+##### regions description `<#|name|default>`
+Opens the string editor to write a lore description for the region.
+
+##### regions comments `<#|name|default>`
+Opens the string editor to write builder notes for the region.
+
+##### regions flags `<#|name|default> <flag>`
+Toggles a [region flag](aedit-flags-reference#region-flags) on the specified region.
+
+##### regions who `<#|name|default> <title|blank>`
+Overrides the [areawho](aedit-flags-reference#areawho-flags) display for rooms in this region.
+
+##### regions place `<#|name|default> <placetype|none>`
+Overrides the [placetype](aedit-flags-reference#placetype-flag) for rooms in this region.
+
 ### removetrade `<number>`
 Currently unused.
 
@@ -104,6 +142,12 @@ Unused.
 
 ### show
 Shows the current state of the area being edited. Same as pressing enter.
+
+### tags `<string>`
+Sets searchable tags for the area. Auto-populated from the area name; use this to add additional keywords (e.g. builder names, alternate names, themes) that help with `alist` lookups.
+
+### topic `<topic|clear>`
+Sets the area-wide topic string. Topics appear in room descriptions and are used by quests and events to identify content themes. Use `clear` to remove. Can be overridden per-region with `regions topic`.
 
 ### varclear `<name>`
 Clears the named variable.

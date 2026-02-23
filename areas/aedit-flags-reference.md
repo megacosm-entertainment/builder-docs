@@ -76,6 +76,15 @@ These change how your location shows up on the 'who' list.
 | duty | Duty |
 
 
+## Region Flags
+
+Set via `regions flags <#|default> <flag>`. Flags apply to all rooms assigned to that region.
+
+| Flag | Effect |
+|:-----|:-------|
+| `keep_live` | Keeps the region active even when empty (prevents cleanup of dynamic content). |
+| `no_recall` | Prevents recall and similar teleportation from rooms in this region. Overrides the room-level no_recall where needed. |
+
 ## PlaceType Flag
 ```
 Nowhere            Wilderness         First Continent    Second Continent   

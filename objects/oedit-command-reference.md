@@ -31,8 +31,13 @@ Adds [catalyst](oedit-flags-reference#catalyst-types) data to the object. Cataly
 ### addimmune `<imm|res|vuln> <flag> <#rand>`
 Allows adding an [imm/res/vuln flag](../mobiles/medit-flags-reference.md#immresvuln) as an affect on the object.
 
-### addoprog `<vnum> <trigger> <phrase>`
-Adds an object script to an object, with the given trigger and phrase
+### addoprog `<widevnum> <trigger> <phrase>`
+Adds an object script to an object, with the given trigger and phrase. Widevnum format: `area_uid#vnum`.
+
+### addquest `<quest widevnum>`
+Attaches a v2 quest to this object, making it available for players to pick up via interaction. Widevnum format: `area_uid#vnum` (e.g. `5#1000`).
+
+The list of attached quests is shown in the **Scripts** tab (`show`). Use `delquest <#>` to remove one.
 
 ### addskill `<skill name> <#modifier> <#rand>`
 Adds skill modifier affects to an object.
@@ -55,8 +60,10 @@ Sets the starting condition for the object.
 ### cost `<silver>`
 Sets the default cost of the object, in silver.
 
-### create `[vnum]`
-Creates a new object. Will use next available vnum in the current zone, unless a vnum is specified.
+### create `[widevnum]`
+Creates a new object. Will use next available vnum in the current area, unless a widevnum (`area_uid#vnum`) is specified.
+
+Usually it's easier to open the target widevnum directly: `oedit 5#800`
 
 ### delaffect `<affect number>`
 Removes the specified affect from the object.
@@ -69,6 +76,9 @@ Removes the specified imm/res/vuln flag from the object.
 
 ### deloprog `<obj prog number>`
 Removes the specified object prog from the object.
+
+### delquest `<#>`
+Removes an attached quest by its list index. Use `show` to see the current list and indices.
 
 ### delspell `<spell number>`
 Removes the specified spell from the object.
@@ -134,6 +144,28 @@ Toggles the object's 'oupdate' flag. This is not currently used.
 ### persist <on|off>
 Enables or disables default persistence for instances of this object. Use sparingly.
 
+### prerequisites `<dsl|none>`
+Sets a requirements rule that a character must satisfy before they can wear this object. Written in the [Requirements DSL](../advanced-concepts/requirements-dsl.html). Use `none` to clear.
+
+```
+prerequisites tot_level 50
+prerequisites (race elf OR race human) AND class_current ranger
+prerequisites quest_completed 5#1000 AND reputation 5#10 rank >= 3
+prerequisites none
+```
+
+When the check fails, a generic "You don't meet the requirements to use this item." message is shown. Immortals are exempt.
+
+By default, prerequisites are **invisible to players** in identify and inspect output. Append `, <message>` to make them visible:
+
+```
+prerequisites tot_level 50, Level 50 required.
+prerequisites class_current warrior, Warriors only.
+prerequisites race elf, hidden
+```
+
+See [Requirements DSL — Player-visible message](../advanced-concepts/requirements-dsl.html#player-visible-message) for full details.
+
 ### prev
 Moves to editing the previous object in the zone.
 
@@ -161,10 +193,20 @@ Sets object values 0-7. Value meanings can vary wildly between item types, so th
 ### varclear `<variable name>`
 Clears the named variable.
 
-### varset `<name> <number|string|room> <yes|no> <value>`
-Used to set a variable that will load on every instance of the object. This can be a number, a string, or reference to a room. The Yes/No value is to mark if the variable should be saved on the object.
+### varset `<name> <number|string|room|rsg> <yes|no> <value>`
+Sets a variable on every instance of the object. Types: `number`, `string`, `room`, `rsg`. The `yes/no` flag controls whether the value is saved with the object.
 
-Ex: `varset home room yes 4000` - This would set a variable on the object, 'home', as a reference to room 4000.
+Use `rsg` (or `generator`) for random-string-generator variables — spec format: `<rsg_name>:<pattern|class>:<entry_name>`.
+
+Examples:
+```
+varset home room yes 4000
+varset label string no A strange relic.
+varset item_name rsg yes artifact_names:pattern:full_name
+```
+
+{: .info}
+**Variable expansion in string fields:** Variables can be embedded in an object's `name`, `short`, `long`, and `description` fields using `$<var_name>` syntax.
 
 ### waypoints add `<wilds uid> <south point> <east point> [name]`
 Adds a waypoint at the given location, optionally with the given name. Meant for use with 'map' objects.

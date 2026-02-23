@@ -7,16 +7,17 @@ parent: Mobile Editor
 
 ```
 ?              act            act2           addmprog       affect         
-affect2        alignment      armour         attacks        commands       
-comments       create         damdice        damtype        delmprog       
-description    hitdice        hitroll        immune         level          
-long           manadice       material       movedice       name           
-next           off            owner          part           persist        
-position       prev           questor        crew           boss           
-race           res            sex            shop           short          
-show           sign           size           spec           vuln           
-wealth         scriptkwd      varset         varclear       corpsetype     
-corpsevnum     zombievnum 
+affect2        alignment      armour         attacks        bodytype       
+commands       comments       create         damdice        damtype        
+delmprog       description    hitdice        hitroll        immune         
+level          long           manadice       material       movedice       
+name           next           off            owner          part           
+persist        position       pronounss      pronounos      pronounpas     
+pronounpps     pronounrs      prev           questor        crew           
+boss           race           res            sex            shop           
+short          show           sign           size           spec           
+vuln           wealth         scriptkwd      varset         varclear       
+corpsetype     corpsevnum     zombievnum 
 ```
 
 ### ?
@@ -28,10 +29,17 @@ Used to set act flags for mobs. Refer to [act flags reference](medit-flags-refer
 ### act2 `<flag1> [flag2] [flag3] ...`
 Used to set act2 flags for mobs. Refer to [act2 flags reference](medit-flags-reference#act2-flags) for more details.
 
-### addmprog `<vnum> <trigger> <phrase>`
-Adds a [mob prog](scripting/mobile-programs) to the mob, set to fire on the given trigger, with the provided phrase.
+### addmprog `<widevnum> <trigger> <phrase>`
+Adds a [mob prog](scripting/mobile-programs) to the mob, set to fire on the given trigger, with the provided phrase. The widevnum format is `area_uid#vnum` (e.g. `5#300`) or just the vnum within the same area.
 
-`Example: addmprog 11001 sayto hello` - This would cause mob prog 11001 to fire when a player used `sayto <mob> hello`.
+`Example: addmprog 5#300 sayto hello` - This would cause mob prog 5#300 to fire when a player used `sayto <mob> hello`.
+
+`Example: addmprog 5#301 greet 100` - Fire the greet prog on 100% of character arrivals.
+
+### addquest `<quest widevnum>`
+Attaches a v2 quest to this mobile, marking it as a quest giver. Widevnum format: `area_uid#vnum` (e.g. `5#1000`). Multiple quests can be attached — players can receive all of them from this mob.
+
+Use `delquest <#>` to remove a quest by its list index.
 
 ### affect `<affect1> [affect2] [affect3] ...`
 Used to set affect flags for mobs. Refer to [affect flags reference](medit-flags-reference#affectedby) for more details.
@@ -54,8 +62,8 @@ Lists all of the commands available in the mobile editor. You're here!
 ### comments
 Opens the string editor to write builder comments. This field is like writing any description, but is only visible to builders. Leave notes here about plans, things you need help with, the purpose of the mob, relevant other vnums, etc.
 
-### create `[vnum]`
-Creates a brand new mobile. If vnum is omitted, it will use the next available in your current zone.
+### create `[widevnum]`
+Creates a brand new mobile. If widevnum is omitted, it uses the next available vnum in your current area. Use format `area_uid#vnum` (e.g. `medit create 5#200`) to create at a specific widevnum.
 
 ### damdice `<number> <sides> <bonus>`
 Sets base damage dice for the mob (if not using a weapon.) Works out to `<number>d<sides>+bonus`
@@ -65,6 +73,9 @@ Used to set the damage verb used for the mob, such as 'wintery breath' or 'boili
 
 ### delmprog `<number>`
 Removes the listed mob prog from the mob.
+
+### delquest `<#>`
+Removes an attached quest from the mobile by its list index. Use `show` to see the current quest list and indices.
 
 ### description
 Enters the string editor to set a description that will be seen when players `look <mob>`. Make it a good one!
@@ -117,6 +128,52 @@ Marks the mob as persistent. Copies of this mob will save more like players, and
 ### position `<start|default> <position>`
 Sets the starting or default [position](medit-flags-reference#position) of the mob.
 
+### pronounss `<text>`
+Sets the **subjective pronoun** (he/she/they). Used when the game refers to the mob as a subject.
+
+```
+pronounss he
+pronounss she
+pronounss they
+```
+
+### pronounos `<text>`
+Sets the **objective pronoun** (him/her/them). Used when the mob is the object of an action.
+
+```
+pronounos him
+```
+
+### pronounpas `<text>`
+Sets the **possessive adjective** (his/her/their). Used before a noun: *his sword*, *her cloak*.
+
+```
+pronounpas his
+```
+
+### pronounpps `<text>`
+Sets the **possessive pronoun** (his/hers/theirs). Used as a standalone possessive: *the sword is his*.
+
+```
+pronounpps his
+```
+
+### pronounrs `<text>`
+Sets the **reflexive pronoun** (himself/herself/themselves). Used in reflective actions: *hurt himself*.
+
+```
+pronounrs himself
+```
+
+**Full example (male humanoid):**
+```
+pronounss  he
+pronounos  him
+pronounpas his
+pronounpps his
+pronounrs  himself
+```
+
 ### prev
 Switches to editing the previous mob in the area.
 
@@ -125,6 +182,14 @@ Sets questmaster data on the mob. See [questor](medit-additional-data#questor) f
 
 ### crew `<many commands>`
 Sets crew data on the mob. See [crew](medit-additional-data#crew) for more details.
+
+### bodytype `<type>`
+Sets the mob's body type using the `body_types` flag table. Body type governs what anatomy the mob has for hit-location and equipment purposes.
+
+```
+bodytype humanoid
+bodytype quadruped
+```
 
 ### boss `<on|off>`
 Marks the mob as a boss. Currently unused outside of dungeons.
@@ -167,10 +232,27 @@ Sets the mob's carried coins, in silver.
 ### scriptkwd `<keywords>`
 Used to set keywords on the mob that can only be used by scripting. Somewhat deprecated, deprecates old style of mob naming `mmVNUMmm` for use by scripts.
 
-### varset `<name> <number|string|room> <yes|no> <value>`
-Used to set a variable that will load on every instance of the mob. This can be a number, a string, or reference to a room. The Yes/No value is to mark if the variable should be saved on the mob.
+### varset `<name> <number|string|room|rsg> <yes|no> <value>`
+Sets a persistent variable on the mob index that loads on every instance. The `yes/no` flag controls whether the variable is saved with the mob.
 
-Ex: `varset home room yes 4000` - This would set a variable on the mob, 'home', as a reference to room 4000.
+| Type | Description |
+|------|-------------|
+| `number` | Integer value |
+| `string` | Plain text string |
+| `room` | Widevnum reference to a room |
+| `rsg` | Random String Generator — generates a new random string each time the variable is expanded |
+
+For `rsg` variables the value is a spec: `<rsg_name>:<pattern|class>:<entry_name>`.
+
+```
+varset home_room room yes 5#110
+varset greeting string yes Hello, adventurer!
+varset mob_name rsg yes sith_names:pattern:full_name
+varset mob_title rsg yes sith_names:class:title
+```
+
+{: .info}
+**Variable expansion in string fields:** Variables (including `rsg` type) can be used inside name, short, long, and description fields of mobiles using `$<var_name>` syntax.
 
 ### varclear `<variable name>`
 Clears the given variable on the mob.
