@@ -2,7 +2,6 @@
 layout: default
 title: Tutorial
 nav_order: 12
-parent: Builder Docs
 has_children: true
 ---
 
