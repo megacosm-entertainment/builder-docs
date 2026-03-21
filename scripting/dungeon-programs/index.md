@@ -1,12 +1,176 @@
 ---
 layout: default
-title: Dungeon Scripts
-nav_order: 8
-has_children: true
+title: Dungeon Programs
+nav_order: 7
 parent: Scripting
+has_children: true
 ---
 
-# Dungeon Scripts
+# Dungeon Programs
+{: .no_toc }
+
+Dungeon programs (dungeon progs) are scripts attached to dungeon blueprints that control procedurally generated content — boss encounters, progression mechanics, floor transitions, and dungeon-wide events. They are the orchestration layer for Sentience's instanced dungeon system.
+
+<details open markdown="block">
+<summary>Table of Contents</summary>
+{: .text-delta }
+- TOC
+{:toc}
+</details>
+
 ---
-{: .warning}
-Dungeons are a Work-In-Progress, mostly untested feature. Beware!
+
+## What Are Dungeon Programs?
+
+A dungeon program is a block of scripting code that runs in response to a dungeon-level event — the dungeon is created, a player enters, a random tick fires, or the dungeon completes. Unlike mob or room programs that control individual entities, dungeon programs operate on the dungeon blueprint as a whole.
+
+Every command in a dungeon prog is prefixed with `dungeon` — for example, `dungeon echoat`, `dungeon mload`, `dungeon varset`. This tells the engine the command originates from the dungeon entity.
+
+{: .note }
+> **Dungeons vs. instances:** A *dungeon* is a blueprint (template) that defines what gets generated. An *instance* is a single runtime copy of that blueprint created when players enter. Dungeon programs run on the blueprint and can control all instances created from it. Instance programs run on individual instances. Both share many of the same commands.
+
+## When to Use Dungeon Programs
+
+Dungeon programs are ideal for:
+
+- **Procedural content generation** — Using the `dungeon_schematic` trigger to dynamically define floor layouts, room connections, and mob placements at creation time
+- **Dungeon progression** — Tracking boss kills, key item pickups, and phase transitions that advance the dungeon from start to completion
+- **Boss encounters** — Orchestrating multi-phase boss fights with floor-wide effects, add spawns, and environmental changes
+- **Floor transitions** — Sending players between dungeon floors using `sendfloor` with portal, teleport, or group transfer modes
+- **Completion and failure logic** — Handling what happens when a dungeon is completed or failed (rewards, cleanup, announcements)
+- **Checkpoint management** — Setting respawn points so players return to the right location after death
+- **Dungeon-wide communication** — Broadcasting messages to all players in the dungeon with `echoat`
+
+## How Dungeon Programs Work
+
+Every dungeon prog has three parts:
+
+1. **The script** — A block of code stored in the area file (identified by widevnum)
+2. **A trigger** — The event that causes the script to run (e.g., `dungeon_commenced`, `random`, `completed`)
+3. **An attachment** — The link between the script, the trigger, and the dungeon blueprint
+
+When the trigger event occurs, the engine runs the script in the context of the dungeon. The `$self` variable refers to the dungeon entity. Because dungeon programs run at the blueprint level, many commands require explicit targets — you must specify rooms, characters, or instances by reference rather than relying on an implicit location.
+
+### The Dungeon Lifecycle
+
+Understanding when triggers fire requires understanding the dungeon lifecycle:
+
+1. **Blueprint definition** — The dungeon is defined in the area file with floors, rooms, and special exits
+2. **Schematic generation** — When `DUNGEON_SCRIPTED_LEVELS` flag is set, the `dungeon_schematic` trigger fires to let scripts define the level layout
+3. **Instantiation** — A player enters and an instance is created from the blueprint; `repop` triggers fire
+4. **Commencement** — A script calls `dungeon dungeoncommence` to officially start the dungeon; `dungeon_commenced` fires
+5. **Gameplay** — Players progress through floors; `entry`, `random`, and `tick` triggers fire as appropriate
+6. **Resolution** — The dungeon is marked complete (`dungeon dungeoncomplete`) or failed (`dungeon dungeonfailure`); `completed` or `failed` triggers fire
+7. **Reset** — When the dungeon's age exceeds the repop timer, the `reset` trigger fires
+
+## Key Concepts
+
+### Floors
+
+A dungeon is organized into floors. Each floor is an instance containing rooms, mobs, and objects. The `sendfloor` command transfers players between floors. Floor numbers are 1-indexed.
+
+### Special Rooms
+
+Dungeons can define special rooms — entry points, exit points, boss rooms, and other named locations referenced by scripts. These are resolved when the dungeon is instantiated.
+
+### Dungeon Flags
+
+Dungeon instances track their state through flags:
+
+| Flag | Meaning |
+|------|---------|
+| `DUNGEON_COMMENCED` | The dungeon has officially started (set by `dungeoncommence`) |
+| `DUNGEON_COMPLETED` | The dungeon was successfully completed (set by `dungeoncomplete`) |
+| `DUNGEON_FAILED` | The dungeon ended in failure (set by `dungeonfailure`) |
+| `DUNGEON_SCRIPTED_LEVELS` | Level definitions are generated by a `dungeon_schematic` trigger |
+
+### Group Constraints
+
+Dungeon blueprints can define minimum and maximum group sizes, a maximum player count, and death release behavior. These are set in the dungeon editor, not through scripts.
+
+## Creating a Dungeon Program with `dpedit`
+
+The `dpedit` editor (accessed via the `dprog` command) creates, edits, and manages dungeon programs. Here is a typical workflow:
+
+### Step 1: Create the Script
+
+```
+dpedit create
+```
+
+This creates a new dungeon program in the current area and opens the editor. You will see the program's assigned widevnum.
+
+To create a program with a specific vnum:
+
+```
+dpedit create <vnum>
+```
+
+### Step 2: Name the Script
+
+Give it a descriptive name:
+
+```
+name Dungeon boss phase controller
+```
+
+### Step 3: Write the Code
+
+Enter the code editor:
+
+```
+code
+```
+
+This opens a line-based text editor. Type your script, then type `.` on a blank line to finish:
+
+```
+** Boss encounter phase controller
+** Fires on dungeon_commenced trigger
+if dungeonflag $self commenced
+  dungeon echoat $self {YThe dungeon trembles as ancient wards activate!{x
+  dungeon mload 50100
+  dungeon varset $self boss_phase 1
+endif
+.
+```
+
+### Step 4: Attach to a Dungeon
+
+Exit the program editor, then open the dungeon blueprint editor and attach the script:
+
+```
+dedit <dungeon vnum>
+addprog <script vnum> dungeon_commenced 100
+```
+
+The phrase `100` means 100% chance — the script fires every time.
+
+### Step 5: Test
+
+Reset the area or create a new instance to test your script.
+
+## Entity Bindings
+
+When a dungeon trigger fires, your script can reference these entities:
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `$self` / `$(dungeon)` | Dungeon | The dungeon blueprint (self-reference) |
+| `$n` / `$(enactor)` | Mobile | The character who triggered the event (if any) |
+| `$t` / `$(victim)` | Mobile | The victim/target (if any) |
+| `$p` / `$(obj1)` | Object | Primary object involved (if any) |
+| `$o` / `$(obj2)` | Object | Secondary object involved (if any) |
+| `$q` / `$(token)` | Token | Token parameter (if any) |
+| `$(phrase)` | String | The matched trigger phrase |
+
+{: .important }
+> Dungeon programs have no implicit room context. Use `echoat` with an explicit target (a room, the dungeon, or a player) rather than `echo`.
+
+## Next Steps
+
+- [Triggers](dprog-triggers.md) — All 9 dungeon triggers with phrase types and firing conditions
+- [Commands](dprog-commands.md) — All 48 commands available in dungeon programs
+- [Examples](dprog-examples.md) — Complete worked examples with explanations
+- [Shared Commands Reference](../shared-commands.md) — Full documentation for commands shared across entity types
+- [Variables and Tokens](../variables-and-tokens.md) — Quick-code variables and token reference
